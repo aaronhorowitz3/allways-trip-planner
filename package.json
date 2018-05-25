@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/aaronhorowitz3/allways-trip-planner/issues"
   },
-  "homepage": "https://github.com/aaronhorowitz3/allways-trip-planner#readme"
+  "homepage": "https://github.com/aaronhorowitz3/allways-trip-planner#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.1.2"
+  }
 }
