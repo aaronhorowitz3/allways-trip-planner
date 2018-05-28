@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../styles/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg"></script>
+  <script src="../scripts/jquery-3.3.1.js" charset="utf-8"></script>
+  <script src="../scripts/app.js" charset="utf-8"></script>
+
+
+
+  <title>All Ways</title>
+</head>
+<body>
+  <header>
+    <h1>All Ways</h1>
+    <h4>BART Directions and Driving Directions, Together</h4>
+  </header>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Incidents</a>
+    <a href="#">Travel History</a>
+  </nav>
+  <section id="mapNav">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-6">
+          <div id="map"></div>
+        </div>
+      </div>
+    </div>
+    <div id="mapInputs">
+      <input type="text" name="destination" placeholder="Enter your destination">
+      <button type="Submit" name="Go!">Go!</button>
+    </div>
+  </section>
+  <div id="bartStation"></div>
+</body>
+</html>
