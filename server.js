@@ -1,8 +1,17 @@
-var encryption = require('dotenv').config();
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
 
-const db = require('db')
-db.connect({
-  host: process.env.DB_HOST,
-  username: process.env.DB_USER,
-  password: process.env.DB_PASS
-})
+// add the body-parser middleware to the server
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// serve the public directory as a static file directory
+app.use(express.static('public'));
+
+// Require the models directory in server.js
+var db = require('./models');
+var controllers = require('./controllers');
+
+app.get('/', function homepage (req, res) {
+  res.sendFile('views/index.html', { root : __dirname });
+});
