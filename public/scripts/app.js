@@ -1,15 +1,12 @@
-
-
-console.log("boy")
 let stations = document.getElementById('bartStation');
 let stationMenu = document.getElementById('stationList');
 // let li = document.createElement('li');
 // let ul = document.createElement('ul');
 
-
 console.log('sanity')
 
 let googleMaps = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg";
+
 
 let map = new google.maps.Map(document.getElementById('map'), {
   center: {lat: 37.7749, lng: -122.4194},
@@ -21,8 +18,8 @@ trafficLayer.setMap(map);
 
 
 navigator.geolocation.getCurrentPosition(function(response){
-  // console.log(parseFloat(response.coords.latitude) + " " + parseFloat(response.coords.longitude))
-  var marker = new google.maps.Marker({
+  let marker = new google.maps.Marker({
+
     map: map,
     position: {
       lat: parseFloat(response.coords.latitude),
@@ -85,4 +82,4 @@ function getLocation() {
   })
 }
 
-console.log(nearestBart('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.7904035,-122.40076839999999&radius=1500&type=transit_station&keyword=bart&key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg'))
+console.log(nearestBart('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.7904035,-122.40076839999999&radius=1500&type=transit_station&keyword=bart&key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg'))>>>>>>> master
