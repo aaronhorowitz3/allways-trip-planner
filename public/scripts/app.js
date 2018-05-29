@@ -1,22 +1,21 @@
-console.log('sanity')
-
-var stations = document.getElementById('bartStation');
+let stations = document.getElementById('bartStation');
+let stationMenu = document.getElementById('stationList');
 // let li = document.createElement('li');
 // let ul = document.createElement('ul');
 
-var googleMaps = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg";
+let googleMaps = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg";
 
-var map = new google.maps.Map(document.getElementById('map'), {
+let map = new google.maps.Map(document.getElementById('map'), {
   center: {lat: 37.7749, lng: -122.4194},
-  zoom: 8
+  zoom: 10
 });
 
-var trafficLayer = new google.maps.TrafficLayer();
+let trafficLayer = new google.maps.TrafficLayer();
 trafficLayer.setMap(map);
 
 
 navigator.geolocation.getCurrentPosition(function(response){
-  var marker = new google.maps.Marker({
+  let marker = new google.maps.Marker({
     map: map,
     position: {
       lat: parseFloat(response.coords.latitude),
@@ -47,6 +46,11 @@ axios.get('https://api.bart.gov/api/stn.aspx?cmd=stns&key=MW9S-E7SL-26DU-VV8V&js
         scaledSize: {height: 55, width: 55},
       }
     });
+    console.log(station[i].name)
+    let node = document.createElement("option");
+    let textnode = document.createTextNode(station[i].name)
+    node.appendChild(textnode);
+    stationMenu.appendChild(node);
   };
 })
 .catch(function(err){

@@ -31,10 +31,15 @@
         </div>
       </div>
     </div>
-    <div id="mapInputs">
+    <form id="mapInputs">
       <input type="text" name="destination" placeholder="Enter your destination">
+      <select id="stationList">
+        <option value="" disabled selected>PICK YOUR STATION</option>
+        <option value="stationOne">Station One</option>
+        <option value="stationTwo">Station Two</option>
+      </select>
       <button type="Submit" name="Go!">Go!</button>
-    </div>
+    </form>
   </section>
   <div id="bartStation"></div>
 </body>
