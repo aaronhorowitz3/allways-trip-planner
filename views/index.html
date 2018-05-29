@@ -9,11 +9,8 @@
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg"></script>
   <script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="../public/scripts/app.js" charset="utf-8" defer></script>
-  <!-- <script src="scripts/jquery-3.3.1.js" charset="utf-8"></script> -->
 
-
-
-  <title>All Ways</title>
+<title>All Ways</title>
 </head>
 <body>
   <header>
@@ -25,20 +22,22 @@
     <a href="#">Incidents</a>
     <a href="#">Travel History</a>
   </nav>
-  <div id="map">
+  <section id="mapNav">
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-md-6">
+          <div id="map"></div>
         </div>
       </div>
     </div>
-    <div id="mapInputs">
+    <form id="mapInputs">
       <input type="text" name="destination" placeholder="Enter your destination">
+      <select id="stationList">
+        <option value="" disabled selected>PICK YOUR STATION</option>
+      </select>
       <button type="Submit" name="Go!">Go!</button>
-    </div>
-  </div>
-  <div id="bartStation">
-    <ul></ul>
-  </div>
+    </form>
+  </section>
+  <div id="bartStation"></div>
 </body>
 </html>
