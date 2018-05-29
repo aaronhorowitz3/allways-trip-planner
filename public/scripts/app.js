@@ -1,46 +1,49 @@
-// axios.get('/user?ID=12345')
-//   .then(function (response) {
-//     console.log(response);
-//   })
-//   .catch(function (error) {
-//     console.log(error);
-//   });
-//
-// // Optionally the request above could also be done as
-// axios.get('/user', {
-//     params: {
-//       ID: 12345
-//     }
-//   })
-//   .then(function (response) {
-//     console.log(response);
-//   })
-//   .catch(function (error) {
-//     console.log(error);
-//   });
+let stations = document.getElementById('bartStation');
+// let li = document.createElement('li');
+// let ul = document.createElement('ul');
+
+var map = new google.maps.Map(document.getElementById('map'), {
+  center: {lat: 37.7749, lng: -122.4194},
+  zoom: 10
+});
+var trafficLayer = new google.maps.TrafficLayer();
+trafficLayer.setMap(map);
 
 
-var bartApiUrl = 'http://api.bart.gov/api/etd.aspx?cmd=etd&orig=RICH&key=MW9S-E7SL-26DU-VV8V&json=y';
-
-
-$(document).ready(function() {
-  console.log('sanitycheck!');
-
-  var map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 37.7749, lng: -122.4194},
-    zoom: 10
-  });
-  var trafficLayer = new google.maps.TrafficLayer();
-  trafficLayer.setMap(map);
-
-  $.ajax({
-    url: bartApiUrl,
-    method: 'GET',
-    success: function(bart) {
-      for(var i = 0; i < bart.root.station.length; i++){
-        $('#bartStation').append(bart.root.station[i].name)
-      }
-
+navigator.geolocation.getCurrentPosition(function(response){
+  var marker = new google.maps.Marker({
+    map: map,
+    position: {
+      lat: parseFloat(response.coords.latitude),
+      lng: parseFloat(response.coords.longitude)
     }
   })
+  map.setCenter({lat: parseFloat(response.coords.latitude),
+    lng: parseFloat(response.coords.longitude)}
+  );
 })
+
+axios.get('https://api.bart.gov/api/stn.aspx?cmd=stns&key=MW9S-E7SL-26DU-VV8V&json=y')
+.then(function(response) {
+  let station = response.data.root.stations.station;
+  for(let i = 0; i < station.length; i++) {
+    // console.log(station[i].abbr)
+      console.log(parseFloat(response.data.root.stations.station[i].gtfs_latitude) + " " + parseFloat(response.data.root.stations.station[i].gtfs_longitude))
+    let marker = new google.maps.Marker({
+      map: map,
+      title: station[i].name,
+      position: {
+        lat: parseFloat(station[i].gtfs_latitude),
+        lng: parseFloat(station[i].gtfs_longitude),
+      },
+      icon: {
+        // railway station by Artdabana@Design from the Noun Project
+        url: "../images/railroadBlk.svg",
+        scaledSize: {height: 55, width: 55},
+      }
+    });
+  };
+})
+.catch(function(err){
+  console.log(err)
+});
