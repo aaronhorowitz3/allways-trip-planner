@@ -1,11 +1,16 @@
-let stations = document.getElementById('bartStation');
+console.log('sanity')
+
+var stations = document.getElementById('bartStation');
 // let li = document.createElement('li');
 // let ul = document.createElement('ul');
 
+var googleMaps = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg";
+
 var map = new google.maps.Map(document.getElementById('map'), {
   center: {lat: 37.7749, lng: -122.4194},
-  zoom: 10
+  zoom: 8
 });
+
 var trafficLayer = new google.maps.TrafficLayer();
 trafficLayer.setMap(map);
 
@@ -38,7 +43,7 @@ axios.get('https://api.bart.gov/api/stn.aspx?cmd=stns&key=MW9S-E7SL-26DU-VV8V&js
       },
       icon: {
         // railway station by Artdabana@Design from the Noun Project
-        url: "../images/railroadBlk.svg",
+        url: "../public/images/railroadBlk.svg",
         scaledSize: {height: 55, width: 55},
       }
     });
