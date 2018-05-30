@@ -1,12 +1,13 @@
+console.log("oi!")
 let stations = document.getElementById('bartStation');
 let stationMenu = document.getElementById('stationList');
 // let li = document.createElement('li');
 // let ul = document.createElement('ul');
 
+
 console.log('sanity')
 
 let googleMaps = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg";
-
 
 let map = new google.maps.Map(document.getElementById('map'), {
   center: {lat: 37.7749, lng: -122.4194},
@@ -18,8 +19,8 @@ trafficLayer.setMap(map);
 
 
 navigator.geolocation.getCurrentPosition(function(response){
-  let marker = new google.maps.Marker({
-
+  // console.log(parseFloat(response.coords.latitude) + " " + parseFloat(response.coords.longitude))
+  var marker = new google.maps.Marker({
     map: map,
     position: {
       lat: parseFloat(response.coords.latitude),
@@ -31,16 +32,16 @@ navigator.geolocation.getCurrentPosition(function(response){
   );
 })
 
-// getBartStations()
-getLocation();
+displayBartStations()
+// getLocation();
 
-function getBartStations(){
+function displayBartStations(){
   axios.get('https://api.bart.gov/api/stn.aspx?cmd=stns&key=MW9S-E7SL-26DU-VV8V&json=y')
   .then(function(response) {
     let station = response.data.root.stations.station;
     for(let i = 0; i < station.length; i++) {
       // console.log(station[i].abbr)
-        console.log(parseFloat(response.data.root.stations.station[i].gtfs_latitude) + " " + parseFloat(response.data.root.stations.station[i].gtfs_longitude))
+        // console.log(parseFloat(response.data.root.stations.station[i].gtfs_latitude) + " " + parseFloat(response.data.root.stations.station[i].gtfs_longitude))
       let marker = new google.maps.Marker({
         map: map,
         title: station[i].name,
@@ -50,15 +51,10 @@ function getBartStations(){
         },
         icon: {
           // railway station by Artdabana@Design from the Noun Project
-          url: "../public/images/railroadBlk.svg",
+          url: "images/railroadBlk.svg",
           scaledSize: {height: 55, width: 55},
         }
       });
-      // console.log(station[i].name)
-        let node = document.createElement("option");
-        let textnode = document.createTextNode(station[i].name)
-        node.appendChild(textnode);
-        stationMenu.appendChild(node);
     };
   })
   .catch(function(err){
@@ -66,8 +62,32 @@ function getBartStations(){
   });
 }
 
+navigator.geolocation.getCurrentPosition(function(response){
+  lat = parseFloat(response.coords.latitude)
+  lng = parseFloat(response.coords.longitude)
+  axios.get ('/location', {
+    params: {
+      lat: lat,
+      lng: lng
+    }
+  })
+  .then(function(response){
+    for(let i = 0; i < response.data.length; i++) {
+      // console.log(response.data[i].name)
+      console.log(response.data[i].name)
+      let node = document.createElement("option");
+      let textnode = document.createTextNode(response.data[i].name)
+      node.appendChild(textnode);
+      stationMenu.appendChild(node);
+    }
+  })
+  .catch(function(err){
+    console.log(err.data)
+  })
+});
+
 function nearestBart(urlHere){
-  axios.get(urlHere)
+  axios.head(urlHere)
   .then(function(response) {
     console.log(response.data);
   })
@@ -75,11 +95,3 @@ function nearestBart(urlHere){
     console.log(err);
   })
 }
-
-function getLocation() {
-  navigator.geolocation.getCurrentPosition(function(response){
-    nearestBart('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + parseFloat(response.coords.latitude) + ',' + parseFloat(response.coords.longitude) + '&radius=1500&type=transit_station&keyword=bart&key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg');
-  })
-}
-
-console.log(nearestBart('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.7904035,-122.40076839999999&radius=1500&type=transit_station&keyword=bart&key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg'))>>>>>>> master
