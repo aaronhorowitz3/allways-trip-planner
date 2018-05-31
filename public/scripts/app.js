@@ -2,14 +2,24 @@
 console.log("oi!")
 let stations = document.getElementById('bartStation');
 let stationMenu = document.getElementById('stationList');
+let stationDest = document.getElementById('stationDest');
+let finalDest = document.getElementById('finalDestination');
+
 // let li = document.createElement('li');
 // let ul = document.createElement('ul');
-let hailMary = document.getElementById('hailMary');
+let hailMary = document.getElementById('hailMary')
 let seeDirect = document.getElementById('directionsButton');
+let seeFinalDirect = document.getElementById('directionsFinalButton');
 
 seeDirect.onclick = function() {
   stations.classList.toggle('hidden');
 };
+
+seeFinalDirect.onclick = function() {
+  finalDest.classList.toggle('hidden');
+};
+
+
 
 console.log('sanity')
 
@@ -90,7 +100,7 @@ navigator.geolocation.getCurrentPosition(function(response){
       node.appendChild(textnode);
       stationMenu.appendChild(node);
       // hailMary.onclick = function(){
-      callTravelTime(lat, lng, destLat, destLng);
+      callTravelTime(lat, lng, destLat, destLng, stations);
     }
   })
   .catch(function(err){
@@ -133,6 +143,26 @@ submit.onclick = function(e){
         scaledSize: {height: 70, width: 70},
         }
       });
+      axios.get('/location', {
+        params: {
+          lat: latitude,
+          lng: longitude
+        }
+      })
+      .then(function(response){
+        for(let i = 0; i < response.data.length && i < 1; i++) {
+          console.log(response)
+          console.log(response.data[i].name)
+          let destLat = response.data[i].geometry.location.lat
+          let destLng = response.data[i].geometry.location.lng
+          console.log(response.data[i].geometry.location.lat)
+          let node = document.createElement("option");
+          let textnode = document.createTextNode(response.data[i].name)
+          node.appendChild(textnode);
+          stationDest.appendChild(node);
+          callTravelTime(destLat, destLng, lat, lng, finalDestination);
+        }
+      })
     })
     .catch(function(err){
       console.log(err)
@@ -140,22 +170,22 @@ submit.onclick = function(e){
   }
 }
 
-function callTravelTime(latit, longit, destLatit, destLongit) {
-  axios.get('/travelTime',{
+function callTravelTime(latit, longit, destLatit, destLongit, param) {
+  axios.get('/travelTime', {
     params: {
-    lat: latit,
-    lng: longit,
-    destLat: destLatit,
-    destLng: destLongit
+      lat: latit,
+      lng: longit,
+      destLat: destLatit,
+      destLng: destLongit
     }
   })
   .then(function(response){
-    console.log(response)
+    // console.log(response)
     for(let j = 0; j < response.data.routes[0].legs[0].steps.length; j++){
       console.log(response.data.routes[0].legs[0].steps[j].html_instructions + "  " + response.data.routes[0].legs[0].steps[j].distance.text)
       let node = document.createElement("li");
       node.innerHTML = response.data.routes[0].legs[0].steps[j].html_instructions + "  " + response.data.routes[0].legs[0].steps[j].distance.text
-      stations.appendChild(node);
+      param.appendChild(node);
     }
   })
 }
