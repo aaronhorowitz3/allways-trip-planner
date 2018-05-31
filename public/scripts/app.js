@@ -189,22 +189,3 @@ function callTravelTime(latit, longit, destLatit, destLongit, param) {
     }
   })
 }
-
-
-
-  // let url = 'https://maps.googleapis.com/maps/api/directions/json?origin=' + lat + ',' + lng + '&destination=' + response.data[i].geometry.location.lat + ',' + response.data[i].geometry.location.lng + '&key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg';
-  // console.log(url);
-  // // }
-//'https://maps.googleapis.com/maps/api/directions/json?origin=Toronto&destination=Montreal&key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg'
-
-// getLocation();
-// function report(taco){
-//   axios.get('/api/stations')
-//   .then(function(response) {
-//   for(let i = 0; i < response.data.length; i++){
-//       if(taco === response.data[i].name ){
-//         console.log(response.data[i].address)
-//       }
-//     }
-//   })
-// }
