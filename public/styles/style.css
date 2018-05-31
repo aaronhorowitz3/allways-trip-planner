@@ -35,3 +35,18 @@ nav {
 .hidden {
   display: none;
 }
+
+#getDirectionsHere, #stationChanges, #mapInputs {
+  margin-left: 2em;
+}
+
+footer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #199aca;
+}
+
+footer p {
+  color: white;
+  margin-left: 2em;
+}

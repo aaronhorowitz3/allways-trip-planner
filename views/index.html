@@ -16,6 +16,7 @@
   <header>
     <h1>All Ways</h1>
     <h4>BART Directions and Driving Directions, Together</h4>
+    <h5>Get you an app that can do both</h5>
   </header>
   <nav>
     <a href="#">Home</a>
@@ -41,6 +42,29 @@
       <button type="Submit" name="Go!">Go!</button>
     </form>
   </section>
-  <div id="bartStation"></div>
-</body>
+  <div id="getDirectionsHere">
+   <h3>Turn By Turn Directions</h3>
+   <div id="bartStation"></div>
+   <ul id="turnByTurn">
+   </ul>
+ </div>
+ <div id="stationChanges">
+<form id="updateStation">
+  <h3>Need to Add a New BART Station?</h3>
+<input type="text" name="station name" placeholder="Station Name">
+<input type="text" name="station abbreviation" placeholder="Stn. Abbrev.">
+<input type="text" name="station latitude" placeholder="Latitude">
+<input type="text" name="station longitude" placeholder="Longitude">
+<input type="text" name="station address" placeholder="Street Address">
+<input type="text" name="station city" placeholder="City">
+<input type="text" name="station county" placeholder="County">
+<input type="text" name="station state" placeholder="State">
+<input type="text" name="station zip" placeholder="Zip Code">
+<button type="Submit" name="Submit">Submit</button>
+</form>
+ </div>
+ <footer>
+<p>&copy; 2018, a Troy and Aaron Production</p>
+ </footer>
+ </body>
 </html>
