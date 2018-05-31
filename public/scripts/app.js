@@ -1,12 +1,8 @@
-// let googleMaps = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg";
 console.log("oi!")
 let stations = document.getElementById('bartStation');
 let stationMenu = document.getElementById('stationList');
 let stationDest = document.getElementById('stationDest');
 let finalDest = document.getElementById('finalDestination');
-
-// let li = document.createElement('li');
-// let ul = document.createElement('ul');
 let hailMary = document.getElementById('hailMary')
 let seeDirect = document.getElementById('directionsButton');
 let seeFinalDirect = document.getElementById('directionsFinalButton');
