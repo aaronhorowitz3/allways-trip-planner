@@ -108,7 +108,7 @@ navigator.geolocation.getCurrentPosition(function(response){
   })
 });
 
-let submit = document.getElementById('submit');
+ let submit = document.getElementById('submit');
 let dest = document.getElementById('dest');
 
 submit.onclick = function(e){
