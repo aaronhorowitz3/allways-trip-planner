@@ -4,7 +4,12 @@ let stations = document.getElementById('bartStation');
 let stationMenu = document.getElementById('stationList');
 // let li = document.createElement('li');
 // let ul = document.createElement('ul');
-let hailMary = document.getElementById('hailMary')
+let hailMary = document.getElementById('hailMary');
+let seeDirect = document.getElementById('directionsButton');
+
+seeDirect.onclick = function() {
+  stations.classList.toggle('hidden');
+};
 
 console.log('sanity')
 
