@@ -24,7 +24,7 @@ app.get('/', function homepage (req, res) {
 
 // Creating a JSON with the backend for the frontend to read
 app.get('/location', function(req,res){
-    let url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + req.query.lat + "," + req.query.lng + '&radius=100000&type=transit_station&keyword=bart&key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg';
+    let url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + req.query.lat + "," + req.query.lng + '&radius=1500&type=transit_station&keyword=bart&key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg';
     // console.log(url);
     axios.get(url, {mode: 'cors', headers:{
     'Access-Control-Allow-Origin':'*'
@@ -58,6 +58,22 @@ app.get('/travelTime', function(req, res){
   })
 })
 
+app.get('/destinationPoint', function(req, res){
+  let url = 'https://maps.google.com/maps/api/geocode/json?address=San+Mateo,+CA&key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg'
+  axios.get(url, {mode: 'cors', dataType: 'json', headers:{
+    'Access-Control-Allow-Origin':'*'
+    }
+  })
+    .then(function(response) {
+    console.log(response.data);
+    res.json(response.data)
+  })
+  .catch(function(err){
+    console.log(err);
+    res.json(err)
+  })
+})
+
 // app.get('/bartTravel', function(req, res){
   // let url = 'http://api.bart.gov/api/sched.aspx?cmd=arrive&orig=' + orig + '&dest=' + dest + '&date=now&key=MW9S-E7SL-26DU-VV8V&b=2&a=2&l=1&json=y'
 // })
@@ -68,6 +84,3 @@ app.get('/api/stations', controllers.station.index);
 app.listen(process.env.PORT || 3000, function(){
   console.log("A Troy and Aaron Production.")
 })
-
-// https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.790414399999996,-122.40067540000001&radius=1500&type=transit_station&keyword=bart&key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg
-// https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.5172534,-122.04965449999999&radius=5000000&type=transit_station&keyword=bart&key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg
