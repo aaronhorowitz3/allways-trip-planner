@@ -82,6 +82,6 @@ app.get('/destinationPoint', function(req, res){
 
 app.get('/api/stations', controllers.station.index);
 
-app.listen(process.env.PORT || 3000, function(){
+app.listen(process.env.MONGODB_URL || 3000, function(){
   console.log("A Troy and Aaron Production.")
 })
