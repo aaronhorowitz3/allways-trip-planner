@@ -98,31 +98,46 @@ navigator.geolocation.getCurrentPosition(function(response){
   })
 });
 
-let button = document.getElementById('submit');
+let submit = document.getElementById('submit');
 let dest = document.getElementById('dest');
 
 submit.onclick = function(e){
-  console.log(dest.value);
   e.preventDefault()
-  axios.get('/destinationPoint')
-  .then(function(response){
-    console.log(response.data.results[0].geometry.location.lat)
-    console.log(response.data.results[0].geometry.location.lng)
-    let latitude = parseFloat(response.data.results[0].geometry.location.lat)
-    let longitude = parseFloat(response.data.results[0].geometry.location.lng)
-    let marker = new google.maps.Marker({
-    map: map,
-    // title: response.data.name,
-    position: {
-      lat: latitude,
-      lng: longitude
-    },
-    icon: {
-      url: "images/destination.svg",
-      scaledSize: {height: 55, width: 55},
-    }
-  })
-  })
+
+  if(dest.value === ""){
+    alert("Please enter a destination!")
+  }else{
+    let cityState = dest.value
+    // cityState = cityState.replace(/\s/gi, '+');
+
+    console.log(cityState)
+    axios.get('/destinationPoint', {
+      params: {
+        dest: cityState
+      }
+    })
+    .then(function(response){
+      console.log(response.data.results[0].geometry.location.lat)
+      console.log(response.data.results[0].geometry.location.lng)
+      let latitude = parseFloat(response.data.results[0].geometry.location.lat)
+      let longitude = parseFloat(response.data.results[0].geometry.location.lng)
+      let marker = new google.maps.Marker({
+      map: map,
+      title: response.data.name,
+      position: {
+        lat: latitude,
+        lng: longitude
+        },
+      icon: {
+        url: "images/destination.svg",
+        scaledSize: {height: 70, width: 70},
+        }
+      });
+    })
+    .catch(function(err){
+      console.log(err)
+    })
+  }
 }
 
 function callTravelTime(latit, longit, destLatit, destLongit) {
