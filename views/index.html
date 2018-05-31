@@ -10,7 +10,7 @@
   <script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="scripts/app.js" charset="utf-8" defer></script>
 
-<title>All Ways</title>
+  <title>All Ways</title>
 </head>
 <body>
   <header>
@@ -31,53 +31,59 @@
         </div>
       </div>
     </div>
-    <form id="mapInputs">
-      <input type="text" name="current location" placeholder="Starting Location">
-      <input type="checkbox" id="useCurrent">
-      <label for="useCurrent">Use Current Location</label>
-      <input type="text" name="destination" placeholder="Enter your destination" id="dest">
-      <select id="stationList">
-        <option value="" disabled selected>Closest Station:</option>
-      </select>
-      <button type="Submit" name="Go!" id="submit">Go!</button>
-    </form>
   </section>
-  <div id="getDirectionsHere">
-   <h3 id="directionsHeader">Directions to BART</h3>
-   <button id="directionsButton">Show/Hide</button>
-   <div id="bartStation" class="hidden"></div>
-   <ul id="turnByTurn">
-   </ul>
- </div>
- <hr>
- <h4 id="midDirections">Take BART to: <select id="stationDest">
-        <option value="" disabled selected>Destination Station:</option>
-      </select></h4>
- <hr>
- <div id="directionsFromBart">
-   <h3 id="directionsFinalHeader">Directions from BART</h3>
-   <button id="directionsFinalButton">Show/Hide</button>
-   <div id="finalDestination" class="hidden"></div>
-   <ul id="lastTurnByTurn">
-   </ul>
- </div>
- <div id="stationChanges">
-<form id="updateStation">
-  <h3>Need to Add a New BART Station?</h3>
-<input type="text" name="station name" placeholder="Station Name">
-<input type="text" name="station abbreviation" placeholder="Stn. Abbrev.">
-<input type="text" name="station latitude" placeholder="Latitude">
-<input type="text" name="station longitude" placeholder="Longitude">
-<input type="text" name="station address" placeholder="Street Address">
-<input type="text" name="station city" placeholder="City">
-<input type="text" name="station county" placeholder="County">
-<input type="text" name="station state" placeholder="State">
-<input type="text" name="station zip" placeholder="Zip Code">
-<button type="Submit" name="Submit">Submit</button>
-</form>
- </div>
- <footer>
-<p>&copy; 2018, a Troy and Aaron Production</p>
- </footer>
- </body>
+  <main>
+    <section id="allNavigating">
+      <form id="mapInputs">
+        <input type="text" name="destination" placeholder="Enter your destination" id="dest">
+        <button type="Submit" name="Go!" id="submit">Go!</button>
+        <div id="closestBartStation">
+          <h3 id="closestBartHeader">Closest BART Station:</h3>
+          <p id="stationList"></p>
+        </div>
+      </form>
+      <div id="getDirectionsHere">
+        <h3 id="directionsHeader">Directions to BART</h3>
+        <button id="directionsButton">Show/Hide</button>
+        <div id="bartStation" class="hidden"></div>
+        <ul id="turnByTurn">
+        </ul>
+      </div>
+      <div id="endingBartStation">
+        <h4 id="midDirections">Take BART to: <p id="stationDest"></p></h4>
+      </div>
+      <div id="directionsFromBart">
+        <h3 id="directionsFinalHeader">Directions from BART</h3>
+        <button id="directionsFinalButton">Show/Hide</button>
+        <div id="finalDestination" class="hidden"></div>
+        <ul id="lastTurnByTurn">
+        </ul>
+      </div>
+    </section>
+    <section id="routeMap">
+      <h4 id="routeMapTitle">BART Route Map:</h4>
+      <img src="../images/bart-map.jpg">
+    </section>
+  </main>
+  <div id="stationChanges">
+    <h4><button id="seeSpecs">Need to Add a New BART Station?</button></h4> 
+    <form id="updateStation">
+      <div id="stationSpecs" class="hidden">
+        <input type="text" name="station name" placeholder="Station Name">
+        <input type="text" name="station abbreviation" placeholder="Stn. Abbrev.">
+        <input type="text" name="station latitude" placeholder="Latitude">
+        <input type="text" name="station longitude" placeholder="Longitude">
+        <input type="text" name="station address" placeholder="Street Address">
+        <input type="text" name="station city" placeholder="City">
+        <input type="text" name="station county" placeholder="County">
+        <input type="text" name="station state" placeholder="State">
+        <input type="text" name="station zip" placeholder="Zip Code">
+        <button type="Submit" name="Submit">Submit</button>
+      </div>
+    </form>
+  </div>
+  <footer>
+    <p>&copy; 2018, a Troy and Aaron Production</p>
+  </footer>
+</body>
 </html>
