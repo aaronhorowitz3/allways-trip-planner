@@ -16,7 +16,7 @@
   <header>
     <h1>All Ways</h1>
     <h4>BART Directions and Driving Directions, Together</h4>
-    <h5>Get you an app that can do both</h5>
+    <h4>Get you an app that can do both</h4>
   </header>
   <nav>
     <a href="#">Home</a>
@@ -37,7 +37,7 @@
       <label for="useCurrent">Use Current Location</label>
       <input type="text" name="destination" placeholder="Enter your destination" id="dest">
       <select id="stationList">
-        <option value="" disabled selected>Closest Stations:</option>
+        <option value="" disabled selected>Closest Station:</option>
       </select>
       <button type="Submit" name="Go!" id="submit">Go!</button>
     </form>
@@ -49,6 +49,9 @@
    <ul id="turnByTurn">
    </ul>
  </div>
+ <hr>
+ <h4 id="midDirections">Take BART to: <span id="destinationStation"></span></h4>
+ <hr>
  <div id="directionsFromBart">
    <h3 id="directionsFinalHeader">Directions from BART</h3>
    <button id="directionsFinalButton">Show/Hide</button>
