@@ -17,6 +17,8 @@ header {
   padding-bottom: 25px;
   background-color: #199aca;
   color: white;
+  margin-left: 0em;
+  margin-right: 0em;
 }
 
 h1 {
@@ -52,6 +54,18 @@ nav {
 #directionsHeader, #directionsFinalHeader {
   margin-top: 10px;
   margin-bottom: 10px;
+  font-size: 1em;
+}
+
+hr, #midDirections {
+  margin-left: 2em;
+}
+
+hr, #updateStation {
+  margin-right: 2em;
+}
+
+#midDirections {
   font-size: 1em;
 }
 
