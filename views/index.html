@@ -39,14 +39,21 @@
       <select id="stationList">
         <option value="" disabled selected>Closest Stations:</option>
       </select>
-      <button type="Submit" name="Go!">Go!</button>
+      <button type="Submit" name="Go!" id="submit">Go!</button>
     </form>
   </section>
   <div id="getDirectionsHere">
-   <h3 id="directionsHeader">Turn By Turn Directions</h3>
+   <h3 id="directionsHeader">Directions to BART</h3>
    <button id="directionsButton">Show/Hide</button>
    <div id="bartStation" class="hidden"></div>
    <ul id="turnByTurn">
+   </ul>
+ </div>
+ <div id="directionsFromBart">
+   <h3 id="directionsFinalHeader">Directions from BART</h3>
+   <button id="directionsFinalButton">Show/Hide</button>
+   <div id="finalDestination" class="hidden"></div>
+   <ul id="lastTurnByTurn">
    </ul>
  </div>
  <div id="stationChanges">

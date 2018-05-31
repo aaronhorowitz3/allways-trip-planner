@@ -36,7 +36,7 @@ nav {
   display: none;
 }
 
-#getDirectionsHere, #stationChanges, #mapInputs {
+#getDirectionsHere, #stationChanges, #mapInputs, #directionsFromBart {
   margin-left: 2em;
 }
 
@@ -45,11 +45,11 @@ nav {
   margin-top: 2em;
 }
 
-#directionsHeader, #directionsButton {
+#directionsHeader, #directionsButton, #directionsFinalButton, #directionsFinalHeader {
   display: inline-block;
 }
 
-#directionsHeader {
+#directionsHeader, #directionsFinalHeader {
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 1em;
