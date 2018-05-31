@@ -10,6 +10,8 @@ let finalDest = document.getElementById('finalDestination');
 let hailMary = document.getElementById('hailMary')
 let seeDirect = document.getElementById('directionsButton');
 let seeFinalDirect = document.getElementById('directionsFinalButton');
+let stationSpecifics = document.getElementById('stationSpecs');
+let seeSpecifics = document.getElementById('seeSpecs');
 
 seeDirect.onclick = function() {
   stations.classList.toggle('hidden');
@@ -19,7 +21,9 @@ seeFinalDirect.onclick = function() {
   finalDest.classList.toggle('hidden');
 };
 
-
+seeSpecifics.onclick = function() {
+  stationSpecifics.classList.toggle('hidden');
+}
 
 console.log('sanity')
 
@@ -160,7 +164,7 @@ submit.onclick = function(e){
           let textnode = document.createTextNode(response.data[i].name)
           node.appendChild(textnode);
           stationDest.appendChild(node);
-          callTravelTime(destLat, destLng, lat, lng, finalDestination);
+          callTravelTime(destLat, destLng, latitude, longitude, finalDestination);
         }
       })
     })

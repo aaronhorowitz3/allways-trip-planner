@@ -38,7 +38,7 @@ nav {
   display: none;
 }
 
-#getDirectionsHere, #stationChanges, #mapInputs, #directionsFromBart {
+#getDirectionsHere, #stationChanges, #mapInputs, #directionsFromBart, #routeMapTitle {
   margin-left: 2em;
 }
 
@@ -47,18 +47,26 @@ nav {
   margin-top: 2em;
 }
 
-#directionsHeader, #directionsButton, #directionsFinalButton, #directionsFinalHeader {
+#directionsHeader, #directionsButton, #directionsFinalButton, #directionsFinalHeader, #stationList, #closestBartHeader {
   display: inline-block;
 }
 
-#directionsHeader, #directionsFinalHeader {
+#directionsHeader, #directionsFinalHeader, #closestBartHeader, #routeMapTitle {
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   font-size: 1em;
 }
 
-hr, #midDirections {
+#dest, #stationList, #mapInputs, #directionsButton, #midDirections {
+  margin-bottom: 1.5em;
+}
+
+hr, #midDirections, img {
   margin-left: 2em;
+}
+
+#stationDest {
+  display: inline-block;
 }
 
 hr, #updateStation {
