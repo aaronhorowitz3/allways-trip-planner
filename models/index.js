@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI || localhost:3000);
+mongoose.connect('mongodb://localhost/allways_test');
 
 let Station = require('./station');
 
