@@ -42,6 +42,27 @@ nav {
 
 #stationChanges {
   margin-bottom: 2em;
+  margin-top: 2em;
+}
+
+#directionsHeader, #directionsButton {
+  display: inline-block;
+}
+
+#directionsHeader {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#directionsButton {
+  margin-bottom: 10px;
+}
+
+button {
+  color: white;
+  background-color: #199aca;
+  padding: .3em 1em .3em 1em;
+  border: none;
 }
 
 footer {
