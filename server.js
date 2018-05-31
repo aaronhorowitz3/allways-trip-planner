@@ -59,12 +59,13 @@ app.get('/travelTime', function(req, res){
 })
 
 app.get('/destinationPoint', function(req, res){
-  let url = 'https://maps.google.com/maps/api/geocode/json?address=San+Mateo,+CA&key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg'
+  // let url = 'https://maps.google.com/maps/api/geocode/json?address=san+mateo,+CA&key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg'
+  let url = 'https://maps.google.com/maps/api/geocode/json?address=' + req.query.dest + ',+CA&key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg'
   axios.get(url, {mode: 'cors', dataType: 'json', headers:{
     'Access-Control-Allow-Origin':'*'
     }
   })
-    .then(function(response) {
+  .then(function(response) {
     console.log(response.data);
     res.json(response.data)
   })
