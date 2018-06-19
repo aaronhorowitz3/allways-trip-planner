@@ -25,7 +25,6 @@ app.get('/', function homepage (req, res) {
 // Creating a JSON with the backend for the frontend to read
 app.get('/location', function(req,res){
     let url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + req.query.lat + "," + req.query.lng + '&radius=1500&type=transit_station&keyword=bart&key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg';
-    // console.log(url);
     axios.get(url, {mode: 'cors', headers:{
     'Access-Control-Allow-Origin':'*'
     }
@@ -39,6 +38,8 @@ app.get('/location', function(req,res){
     res.json(err)
   })
 })
+
+//ADDED WALKING MODE - GO TO BED
 
 
 app.get('/travelTime', function(req, res){
@@ -75,13 +76,11 @@ app.get('/destinationPoint', function(req, res){
   })
 })
 
-// app.get('/bartTravel', function(req, res){
-  // let url = 'http://api.bart.gov/api/sched.aspx?cmd=arrive&orig=' + orig + '&dest=' + dest + '&date=now&key=MW9S-E7SL-26DU-VV8V&b=2&a=2&l=1&json=y'
-// })
-
 
 app.get('/api/stations', controllers.station.index);
+// app.post('/api/stations', controllers.station.create);
 
-app.listen(process.env.MONGODB_URL || 3000, function(){
+
+app.listen(process.env.PORT || 3000, function(){
   console.log("A Troy and Aaron Production.")
 })
