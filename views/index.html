@@ -1,89 +1,90 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles/style.css">
-  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg"></script>
-  <script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="scripts/app.js" charset="utf-8" defer></script>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <link rel="stylesheet" href="styles/style.css">
+   <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg"></script>
+   <script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+   <script src="scripts/app.js" charset="utf-8" defer></script>
 
-  <title>All Ways</title>
+   <title>All Ways</title>
 </head>
 <body>
-  <header>
-    <h1>All Ways</h1>
-    <h4>BART Directions and Driving Directions, Together</h4>
-    <h4>Get you an app that can do both</h4>
-  </header>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Delays </a>
-    <a href="#">Travel History</a>
-  </nav>
-  <section id="mapNav">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-md-6">
-          <div id="map"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <main>
-    <section id="allNavigating">
-      <form id="mapInputs">
-        <input type="text" name="destination" placeholder="Enter your destination" id="dest">
-        <button type="Submit" name="Go!" id="submit">Go!</button>
-        <div id="closestBartStation">
-          <h3 id="closestBartHeader">Closest BART Station:</h3>
-          <p id="stationList"></p>
-        </div>
+   <header>
+      <h1>All Ways</h1>
+      <h4>BART Directions and Driving Directions, Together</h4>
+      <h4>Get you an app that can do both</h4>
+   </header>
+   <nav>
+      <a href="#">Home</a>
+      <a href="#">Delays </a>
+      <a href="#">Travel History</a>
+   </nav>
+   <main>
+      <section id="mapNav">
+         <h4 id="instructions">Enter your destination below the map for step-by-step directions</h4>
+         <div class="container">
+            <div class="row">
+               <div class="col-xl-12">
+                  <div id="map"></div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section id="allNavigating">
+         <form id="mapInputs">
+            <input type="text" name="destination" placeholder="Enter destination" id="dest">
+            <button type="Submit" name="Go!" id="submit">Go!</button>
+            <div id="closestBartStation">
+               <h3 id="closestBartHeader">Closest BART Station to you:</h3>
+               <p id="stationList"></p>
+            </div>
+         </form>
+         <div id="getDirectionsHere">
+            <h3 id="directionsHeader">Directions to BART</h3>
+            <button id="directionsButton">Show/Hide</button>
+            <div id="bartStation" class="hidden"></div>
+            <ul id="turnByTurn">
+            </ul>
+         </div>
+         <div id="endingBartStation">
+            <h4 id="midDirections">Take BART to: <p id="stationDest"></p></h4>
+         </div>
+         <div id="directionsFromBart">
+            <h3 id="directionsFinalHeader">Directions from BART</h3>
+            <button id="directionsFinalButton">Show/Hide</button>
+            <div id="finalDestination" class="hidden"></div>
+            <ul id="lastTurnByTurn">
+            </ul>
+         </div>
+      </section>
+      <section id="routeMap">
+         <h4 id="routeMapTitle">BART Route Map:</h4>
+         <img src="../images/bart-map.jpg" id="bartmap">
+      </section>
+   </main>
+   <div id="stationChanges">
+      <h4><button id="seeSpecs">Need to Add a New BART Station?</button></h4>
+      <form id="updateStation">
+         <div id="stationSpecs" class="hidden">
+            <input type="text" name="station name" placeholder="Station Name">
+            <input type="text" name="station abbreviation" placeholder="Stn. Abbrev.">
+            <input type="text" name="station latitude" placeholder="Latitude">
+            <input type="text" name="station longitude" placeholder="Longitude">
+            <input type="text" name="station address" placeholder="Street Address">
+            <input type="text" name="station city" placeholder="City">
+            <input type="text" name="station county" placeholder="County">
+            <input type="text" name="station state" placeholder="State">
+            <input type="text" name="station zip" placeholder="Zip Code">
+            <button type="Submit" name="Submit">Submit</button>
+         </div>
       </form>
-      <div id="getDirectionsHere">
-        <h3 id="directionsHeader">Directions to BART</h3>
-        <button id="directionsButton">Show/Hide</button>
-        <div id="bartStation" class="hidden"></div>
-        <ul id="turnByTurn">
-        </ul>
-      </div>
-      <div id="endingBartStation">
-        <h4 id="midDirections">Take BART to: <p id="stationDest"></p></h4>
-      </div>
-      <div id="directionsFromBart">
-        <h3 id="directionsFinalHeader">Directions from BART</h3>
-        <button id="directionsFinalButton">Show/Hide</button>
-        <div id="finalDestination" class="hidden"></div>
-        <ul id="lastTurnByTurn">
-        </ul>
-      </div>
-    </section>
-    <section id="routeMap">
-      <h4 id="routeMapTitle">BART Route Map:</h4>
-      <img src="../images/bart-map.jpg">
-    </section>
-  </main>
-  <div id="stationChanges">
-    <h4><button id="seeSpecs">Need to Add a New BART Station?</button></h4>
-    <form id="updateStation">
-      <div id="stationSpecs" class="hidden">
-        <input type="text" name="station name" placeholder="Station Name">
-        <input type="text" name="station abbreviation" placeholder="Stn. Abbrev.">
-        <input type="text" name="station latitude" placeholder="Latitude">
-        <input type="text" name="station longitude" placeholder="Longitude">
-        <input type="text" name="station address" placeholder="Street Address">
-        <input type="text" name="station city" placeholder="City">
-        <input type="text" name="station county" placeholder="County">
-        <input type="text" name="station state" placeholder="State">
-        <input type="text" name="station zip" placeholder="Zip Code">
-        <button type="Submit" name="Submit">Submit</button>
-      </div>
-    </form>
-  </div>
-  <footer>
-    <p>&copy; 2018, a Troy and Aaron Production</p>
-  </footer>
+   </div>
+   <footer>
+      <p>&copy; 2018, a Troy and Aaron Production</p>
+   </footer>
 </body>
 </html>

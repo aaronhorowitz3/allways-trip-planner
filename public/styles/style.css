@@ -9,6 +9,7 @@ body {
 #map {
   height: 600px;
   margin-top: 20px;
+  border: 1px solid #199aca;
 }
 
 header {
@@ -34,8 +35,26 @@ nav {
   margin-bottom: 10px;
 }
 
+#mapNav {
+   margin-right: 10px;
+}
+
+main {
+   margin-left: 10px;
+}
+
 .hidden {
   display: none;
+}
+
+#bartmap {
+   max-width: 100%;
+}
+
+#instructions {
+   text-align: center;
+   margin-top: 40px;
+   margin-bottom: 10px;
 }
 
 #getDirectionsHere, #stationChanges, #mapInputs, #directionsFromBart, #routeMapTitle {
@@ -45,6 +64,7 @@ nav {
 #stationChanges {
   margin-bottom: 2em;
   margin-top: 2em;
+  padding-left: 10px;
 }
 
 #directionsHeader, #directionsButton, #directionsFinalButton, #directionsFinalHeader, #stationList, #closestBartHeader {
